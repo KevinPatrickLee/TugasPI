@@ -20,7 +20,8 @@ class Control extends CI_Controller {
 	 */
   public function index()
   {
-   $this->load->view('home.php');
+   $data['mahasiswa'] = $this->Control_Model->get_data();
+   $this->load->view('home.php', $data);
   }
 
   function register()
@@ -74,5 +75,38 @@ class Control extends CI_Controller {
     {
       echo "Username atau password salah!";
     }
+  }
+  function edit($id)
+  {
+		  $data['edit1'] = $this->Control_Model->edit_data($id);
+      $this->load->view('edit.php', $data);
+	}
+  function update()
+  {
+    $id = $this->input->post('id');
+    $nim = $this->input->post('nim');
+    $nama = $this->input->post('nama');
+    $email = $this->input->post('email');
+    $password = $this->input->post('password');
+    $password = sha1($password);
+    $where = array(
+      'id' => $id
+    );
+    $data = array(
+      'nim' => $nim,
+      'nama' => $nama,
+      'email' => $email,
+      'password' =>$password
+    );
+    $this->Control_Model->update($where,'mahasiswa',$data);
+    redirect('control');
+  }
+  function delete($id)
+  {
+    $where = array(
+      'id' => $id
+    );
+    $this->Control_Model->delete($where,'mahasiswa');
+    redirect('control');
   }
 }
