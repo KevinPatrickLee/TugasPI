@@ -37,7 +37,7 @@ class Control extends CI_Controller {
     $nim = $this->input->post("nim");
     $nama = $this->input->post("name");
     $email = $this->input->post("email");
-    $password = $this->input->post("password");
+    $password = $this->input->post("psw");
     $password = sha1($password);
     $data = array (
       'nim' => $nim,
@@ -47,5 +47,32 @@ class Control extends CI_Controller {
     );
     $this->Control_Model->addAkun('mahasiswa', $data);
     redirect('control');
+  }
+  function dologin()
+  {
+    $email = $this->input->post('email');
+    $password = $this->input->post('psw');
+    $password = sha1($password);
+    $data['cek'] = $this->Control_Model->checklogin($email,$password);
+    if ($data['cek'] != NULL)
+    {
+      foreach ($data['cek'] as $key)
+      {
+        $nim1 = $key->nim;
+        $nama1 = $key->nama;
+        $email1 = $key->email;
+      }
+      $data_session = array (
+        'nim' =>$nim1,
+        'nama' =>$nama1,
+        'email' =>$email1
+      );
+      $this->session->set_userdata($data_session);
+      redirect('control');
+    }
+    else
+    {
+      echo "Username atau password salah!";
+    }
   }
 }
