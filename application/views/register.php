@@ -3,7 +3,7 @@
   <title>Register</title>
 </head>
 <body>
-  <form action="<?php echo base_url('control/dologin'); ?>" method="post">
+  <form action="<?php echo base_url('control/doregister'); ?>" method="post">
   <h1>Register</h1>
   <h3>NIM</h3>
   <input type="number" placeholder="Enter Name" name="name" id="nim" required>

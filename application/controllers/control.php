@@ -32,4 +32,8 @@ class Control extends CI_Controller {
 	{
 		$this->load->view('login.php');
 	}
+  function doregister()
+  {
+    $email
+  }
 }
