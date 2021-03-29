@@ -3,10 +3,10 @@
   <title>Login</title>
 </head>
 <body>
-  <form>
+  <form action="<?php echo base_url('control/dologin'); ?>" method="post">
   <h1>Login</h1>
   <h3>Email</h3>
-  <input type="text" placeholder="Enter Email" name="email" id="email" required>
+  <input type="email" placeholder="Enter Email" name="email" id="email" required>
 
   <h3>Password</h3>
   <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
