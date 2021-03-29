@@ -34,6 +34,18 @@ class Control extends CI_Controller {
 	}
   function doregister()
   {
-    $email
+    $nim = $this->input->post("nim");
+    $nama = $this->input->post("nama");
+    $email = $this->input->post("email");
+    $password = $this->input->post("password");
+    $password = sha1($password);
+    $data = array (
+      'nim' => $nim,
+      'nama' => $nama,
+      'email' => $email,
+      'password' => $password
+    );
+    $this->Control_Model->addAkun('mahasiswa', $data);
+    redirect('control');
   }
 }
