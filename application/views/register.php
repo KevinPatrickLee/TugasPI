@@ -6,7 +6,7 @@
   <form action="<?php echo base_url('control/doregister'); ?>" method="post">
   <h1>Register</h1>
   <h3>NIM</h3>
-  <input type="number" placeholder="Enter Name" name="name" id="nim" required>
+  <input type="number" placeholder="Enter Name" name="nim" id="nim" required>
 
   <h3>Name</h3>
   <input type="text" placeholder="Enter Name" name="name" id="name" required>

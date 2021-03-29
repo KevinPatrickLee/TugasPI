@@ -35,7 +35,7 @@ class Control extends CI_Controller {
   function doregister()
   {
     $nim = $this->input->post("nim");
-    $nama = $this->input->post("nama");
+    $nama = $this->input->post("name");
     $email = $this->input->post("email");
     $password = $this->input->post("password");
     $password = sha1($password);
